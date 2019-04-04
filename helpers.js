@@ -1,4 +1,5 @@
 const LinkedList = require('./LinkedList');
+const DoublyLinkedList = require('./DoublyLinkedList');
 
 const display = (ll) => {
   let tempNode = ll.head;
@@ -96,6 +97,20 @@ const reverse = (ll) => {
 
 }
 
+// FINISH THIS
+const reverseDLL = (dll) => {
+  let head = dll.head;
+  let currNode = dll.tail;
+  let prevNode = dll.tail;
+
+  while(currNode.prev !== head) {
+    console.log(currNode);
+    currNode = currNode.prev;
+  }
+
+  return new DoublyLinkedList(prevNode.next, dll.head);
+}
+
 const thirdFromEnd = (ll) => {
 
   let curr = ll.head
@@ -154,6 +169,7 @@ module.exports = {
   findPrevious,
   findLast,
   reverse,
+  reverseDLL,
   thirdFromEnd,
   middleList,
   cycle

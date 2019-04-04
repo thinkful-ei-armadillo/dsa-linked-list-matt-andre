@@ -47,9 +47,10 @@ function main() {
   DoubleLL.insertFirst('Optimus');
   DoubleLL.insertAt('Turtle', 1);
 
-  console.log(DoubleLL);
-
   console.log('Double LL:', helpers.display(DoubleLL));
+  console.log('Reversed Double LL:', helpers.display(helpers.reverseDLL(DoubleLL)));
+
+  console.log(helpers.reverseDLL(DoubleLL));
 }
 
 main();
