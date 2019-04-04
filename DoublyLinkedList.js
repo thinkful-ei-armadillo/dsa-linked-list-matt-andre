@@ -14,22 +14,27 @@ class DoublyLinkedList {
 
   insertFirst(item) {
     let tempNode = this.head;
-    let newNode = new _DoubleNode(item, tempNode, this.tail);
 
-    if(tempNode !== null) {
+    let newNode = new _DoubleNode(item, tempNode, null);
+
+    if (tempNode !== null) {
       tempNode.prev = newNode;
     }
     this.head = newNode;
+
+    if (!this.tail) {
+      this.tail = this.head
+    }
     //this.tail = new _DoubleNode(item, this.tail, this.head);
   }
 
   insertLast(item) {
-    if(this.head === null) {
+    if (this.head === null) {
       this.insertFirst(item);
     } else {
       let tempNode = this.head;
 
-      while(tempNode.next !== null) {
+      while (tempNode.next !== null) {
         tempNode = tempNode.next;
       }
 
@@ -43,17 +48,17 @@ class DoublyLinkedList {
     let prevNode = this.head;
     let currNode = this.head;
 
-    if(this.head === null) {
+    if (this.head === null) {
       this.insertFirst(newNode);
     }
 
 
-    while(currNode !== null && currNode.value !== key) {
+    while (currNode !== null && currNode.value !== key) {
       prevNode = currNode;
       currNode = currNode.next;
     }
 
-    if(currNode === null) {
+    if (currNode === null) {
       console.log('node not found');
     }
 
@@ -68,22 +73,30 @@ class DoublyLinkedList {
     let prevNode = this.head;
     let currNode = this.head;
 
-    if(this.head === null) {
+    if (this.head === null) {
       this.insertFirst(newNode);
     }
 
-    while(currNode.value !== key) {
+    while (currNode.value !== key) {
       prevNode = currNode;
       currNode = currNode.next;
     }
 
-    if(currNode.next === null) {
+    if (currNode.next === null) {
       console.log('node not found');
     }
-
-    newNode.next = currNode.next;
-    newNode.prev = currNode;
+    let temp = currNode.next;
     currNode.next = newNode;
+    newNode.next = temp;
+  
+    newNode.prev = currNode;
+    if(newNode.next){
+      newNode.next.prev = newNode;
+    }
+    else {
+      this.tail = newNode;
+    }
+      
   }
 
   insertAt(item, pos) {
@@ -92,17 +105,17 @@ class DoublyLinkedList {
     let currNode = this.head;
     let currNodePos = 0;
 
-    if(this.head === null) {
+    if (this.head === null) {
       this.insertFirst(newNode);
     }
 
-    while(currNodePos !== pos) {
+    while (currNodePos !== pos) {
       prevNode = currNode;
       currNode = currNode.next;
       currNodePos++;
     }
 
-    if(currNode.next === null) {
+    if (currNode.next === null) {
       console.log('node not found');
     }
 
@@ -115,12 +128,12 @@ class DoublyLinkedList {
   find(item) {
     let currNode = this.head;
 
-    if(! this.head) {
+    if (!this.head) {
       return null;
     }
 
-    while(currNode.value !== item) {
-      if(currNode.next === null) {
+    while (currNode.value !== item) {
+      if (currNode.next === null) {
         return null;
       } else {
         currNode = currNode.next;
@@ -131,30 +144,31 @@ class DoublyLinkedList {
   }
 
   remove(item) {
-    if(! this.head) {
+    if (!this.head) {
       return null;
     }
 
-    if(this.head.value === item) {
+    if (this.head.value === item) {
       this.head = this.head.next;
+      this.head.prev = null;
       return;
     }
 
     let currNode = this.head;
     let previousNode = this.head;
 
-    while((currNode !== null) && (currNode.value !== item)) {
+    while ((currNode !== null) && (currNode.value !== item)) {
       previousNode = currNode;
       currNode = currNode.next;
     }
 
-    if(currNode === null) {
+    if (currNode === null) {
       console.log(`cannot find item ${item}`);
       return;
     }
 
     previousNode.next = currNode.next;
-    previousNode.prev = currNode.prev;
+    currNode.prev = previousNode.prev;
   }
 }
 

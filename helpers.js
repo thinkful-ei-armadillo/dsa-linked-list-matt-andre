@@ -19,6 +19,24 @@ const display = (ll) => {
   return display;
 };
 
+const displayTail = (ll) => {
+  let tempNode = ll.tail;
+  let display = [];
+
+  if (!tempNode) {
+    return [];
+  }
+
+  while (tempNode.prev !== null) {
+    display.push(tempNode.value);
+    tempNode = tempNode.prev;
+  }
+
+  display.push(tempNode.value);
+
+  return display;
+};
+
 const size = (ll) => {
   let tempNode = ll.head;
   let nodeCount = 1;
@@ -99,16 +117,34 @@ const reverse = (ll) => {
 
 // FINISH THIS
 const reverseDLL = (dll) => {
-  let head = dll.head;
-  let currNode = dll.tail;
-  let prevNode = dll.tail;
+  let currNode = dll.head;
+  let prevNode = null;
 
-  while(currNode.prev !== head) {
-    console.log(currNode);
-    currNode = currNode.prev;
+
+  while (currNode !== null) {
+    let head = currNode.next;
+    currNode.next = prevNode;
+
+    prevNode = currNode;
+    currNode = head;
   }
 
-  return new DoublyLinkedList(prevNode.next, dll.head);
+  let currTail = dll.tail;
+  let prevNode2 = null;
+
+  while(currTail !== null) {
+    let tail = currTail.prev;
+    currTail.prev = prevNode2;
+    
+    prevNode2 = currTail;
+    currTail = tail;
+  }
+
+  let temp = dll.head;
+  dll.head = dll.tail;
+  dll.tail = temp;
+
+  return dll;
 }
 
 const thirdFromEnd = (ll) => {
@@ -164,6 +200,7 @@ const cycle = (ll) => {
 
 module.exports = {
   display,
+  displayTail,
   size,
   isEmpty,
   findPrevious,

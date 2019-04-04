@@ -3,54 +3,55 @@ const DoublyLinkedList = require('./DoublyLinkedList');
 const helpers = require('./helpers');
 
 function main() {
-  const SLL = new LinkedList();
-  const CycleLL = new LinkedList();
-  const DoubleLL = new DoublyLinkedList();
+    const SLL = new LinkedList();
+    const CycleLL = new LinkedList();
+    const DoubleLL = new DoublyLinkedList();
 
-  // CycleLL.insertLast(1)
-  // CycleLL.insertLast(1)
-  // CycleLL.insertLast(1)
-  // CycleLL.insertLast(1)
-  // CycleLL.createCycle();
+    // CycleLL.insertLast(1)
+    // CycleLL.insertLast(1)
+    // CycleLL.insertLast(1)
+    // CycleLL.insertLast(1)
+    // CycleLL.createCycle();
 
-  // SLL.insertLast('Apollo');
-  // SLL.insertLast('Boomer');
-  // SLL.insertLast('Helo');
-  // SLL.insertLast('Husker');
-  // SLL.insertLast('Starbuck');
-  // SLL.insertLast('Tauhida');
-  // SLL.remove('squirrel');
-  // SLL.insertBefore('Athena', 'Boomer');
-  // SLL.insertAfter('Hotdog', 'Helo');
-  // SLL.insertAt('Kat', 3);
-  // SLL.remove('Tauhida');
+    // SLL.insertLast('Apollo');
+    // SLL.insertLast('Boomer');
+    // SLL.insertLast('Helo');
+    // SLL.insertLast('Husker');
+    // SLL.insertLast('Starbuck');
+    // SLL.insertLast('Tauhida');
+    // SLL.remove('squirrel');
+    // SLL.insertBefore('Athena', 'Boomer');
+    // SLL.insertAfter('Hotdog', 'Helo');
+    // SLL.insertAt('Kat', 3);
+    // SLL.remove('Tauhida');
 
-  // console.log('SLL:', helpers.display(SLL));
-  // console.log('Size:', helpers.size(SLL));
-  // console.log('Is empty:', helpers.isEmpty(SLL));
-  // console.log('Node before Helo:', helpers.findPrevious(SLL, 'Helo'));
-  // console.log('Last node:', helpers.findLast(SLL));
-  // console.log('The thrid from last is', helpers.thirdFromEnd(SLL))
-  // console.log('The middle element is', helpers.middleList(SLL))
-  // console.log('Has a cycle', helpers.cycle(CycleLL))
-  // console.log('Reversed LL:', helpers.display(helpers.reverse(SLL)));
+    // console.log('SLL:', helpers.display(SLL));
+    // console.log('Size:', helpers.size(SLL));
+    // console.log('Is empty:', helpers.isEmpty(SLL));
+    // console.log('Node before Helo:', helpers.findPrevious(SLL, 'Helo'));
+    // console.log('Last node:', helpers.findLast(SLL));
+    // console.log('The thrid from last is', helpers.thirdFromEnd(SLL))
+    // console.log('The middle element is', helpers.middleList(SLL))
+    // console.log('Has a cycle', helpers.cycle(CycleLL))
+    // console.log('Reversed LL:', helpers.display(helpers.reverse(SLL)));
 
-  DoubleLL.insertLast('Aquaria');
-  DoubleLL.insertLast('Caprica');
-  DoubleLL.insertLast('Gemenon');
-  DoubleLL.insertLast('Picon');
-  DoubleLL.insertLast('Sagittaron');
-  DoubleLL.insertLast('Tauron');
-  DoubleLL.remove('Picon');
-  DoubleLL.insertBefore('Before gemenon', 'Gemenon');
-  DoubleLL.insertAfter('After tauron', 'Tauron');
-  DoubleLL.insertFirst('Optimus');
-  DoubleLL.insertAt('Turtle', 1);
+    DoubleLL.insertLast('Aquaria');
+    DoubleLL.insertLast('Caprica');
+    DoubleLL.insertLast('Gemenon');
+    DoubleLL.insertLast('Picon');
+    DoubleLL.insertLast('Sagittaron');
+    DoubleLL.insertLast('Tauron');
+      DoubleLL.remove('Picon');
+    //   DoubleLL.insertBefore('Before gemenon', 'Gemenon');
+      DoubleLL.insertAfter('After tauron', 'Tauron');
+      DoubleLL.insertFirst('Optimus');
+    //   DoubleLL.insertAt('Turtle', 1);
 
-  console.log('Double LL:', helpers.display(DoubleLL));
-  console.log('Reversed Double LL:', helpers.display(helpers.reverseDLL(DoubleLL)));
+    console.log('Double LL:', helpers.display(DoubleLL));
+    (helpers.reverseDLL(DoubleLL));
+    console.log('Double LL:', helpers.display(DoubleLL));
+    console.log('Double LL:', helpers.displayTail(DoubleLL));
 
-  console.log(helpers.reverseDLL(DoubleLL));
 }
 
 main();
