@@ -4,11 +4,11 @@ const display = (ll) => {
   let tempNode = ll.head;
   let display = [];
 
-  if(! tempNode) {
+  if (!tempNode) {
     return [];
   }
 
-  while(tempNode.next !== null) {
+  while (tempNode.next !== null) {
     display.push(tempNode.value);
     tempNode = tempNode.next;
   }
@@ -22,11 +22,11 @@ const size = (ll) => {
   let tempNode = ll.head;
   let nodeCount = 1;
 
-  if(! tempNode) {
+  if (!tempNode) {
     return 0;
   }
 
-  while(tempNode.next !== null) {
+  while (tempNode.next !== null) {
     tempNode = tempNode.next;
     nodeCount++;
   }
@@ -35,7 +35,7 @@ const size = (ll) => {
 };
 
 const isEmpty = (ll) => {
-  if(! ll.head) {
+  if (!ll.head) {
     return true;
   }
 
@@ -46,11 +46,11 @@ const findPrevious = (ll, key) => {
   let prevNode = ll.head;
   let currNode = ll.head;
 
-  if(ll.head === null) {
+  if (ll.head === null) {
     return 'the list is empty';
   }
 
-  while(currNode.value !== key && currNode.next !== null) {
+  while (currNode.value !== key && currNode.next !== null) {
     prevNode = currNode;
     currNode = currNode.next;
   }
@@ -61,15 +61,15 @@ const findPrevious = (ll, key) => {
 const findLast = (ll) => {
   let prevNode = ll.head;
   let currNode = ll.head;
-  
-  if(ll.head === null) {
+
+  if (ll.head === null) {
     return 'the list is empty';
   }
-  if(ll.head.next === null) {
+  if (ll.head.next === null) {
     return ll.head.value;
   }
 
-  while(currNode.next !== null) {
+  while (currNode.next !== null) {
     prevNode = currNode;
     currNode = currNode.next;
   }
@@ -78,21 +78,70 @@ const findLast = (ll) => {
 };
 
 const reverse = (ll) => {
+
   let currNode = ll.head;
   let prevNode = null;
 
 
-  while(currNode !== null) {
+  while (currNode !== null) {
     let head = currNode.next;
     currNode.next = prevNode;
 
     prevNode = currNode;
     currNode = head;
   }
-  
-  
+
+
   return new LinkedList(prevNode);
 
+}
+
+const thirdFromEnd = (ll) => {
+
+  let curr = ll.head
+  let count = 0;
+  while (curr.next !== null) {
+    curr = curr.next;
+    count++
+  }
+
+  curr = ll.head;
+  for (let i = 0; i <= count - 3; i++) {
+    curr = curr.next
+  }
+
+  return curr.value;
+}
+
+const middleList = (ll) => {
+  let curr = ll.head
+  let count = 0;
+
+  while (curr.next !== null) {
+    curr = curr.next;
+    count++
+  }
+
+  curr = ll.head;
+  let middle = Math.floor(count/2);
+
+  for(let i = 0; i <= middle; i++){
+    curr = curr.next
+  }
+  return curr.value
+}
+
+const cycle = (ll) => {
+  let curr = ll.head;
+
+  while(curr.next !== null){
+    if(curr.next === ll.head){
+      return true
+    }
+    curr = curr.next;
+  }
+  
+  return false;
 }
 
 // 1 2 3
@@ -104,5 +153,8 @@ module.exports = {
   isEmpty,
   findPrevious,
   findLast,
-  reverse
+  reverse,
+  thirdFromEnd,
+  middleList,
+  cycle
 };

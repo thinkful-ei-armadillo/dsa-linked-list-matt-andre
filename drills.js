@@ -3,6 +3,13 @@ const helpers = require('./helpers');
 
 function main() {
   const SLL = new LinkedList();
+  const CycleLL = new LinkedList();
+
+  CycleLL.insertLast(1)
+  CycleLL.insertLast(1)
+  CycleLL.insertLast(1)
+  CycleLL.insertLast(1)
+  CycleLL.createCycle();
 
   SLL.insertLast('Apollo');
   SLL.insertLast('Boomer');
@@ -21,8 +28,10 @@ function main() {
   console.log('Is empty:', helpers.isEmpty(SLL));
   console.log('Node before Helo:', helpers.findPrevious(SLL, 'Helo'));
   console.log('Last node:', helpers.findLast(SLL));
-  console.log('Reversed LL:', helpers.display(helpers.reverse(SLL)));
-
+//   console.log('Reversed LL:', helpers.display(helpers.reverse(SLL)));
+  console.log('The thrid from last is', helpers.thirdFromEnd(SLL))
+  console.log('The middle element is', helpers.middleList(SLL))
+  console.log('Has a cycle', helpers.cycle(CycleLL)) 
 }
 
 main();

@@ -139,6 +139,18 @@ class LinkedList {
 
     previousNode.next = currNode.next;
   }
+
+  createCycle() {
+
+    let currNode = this.head;
+
+    while(currNode.next !== null){
+      currNode = currNode.next;
+    }
+
+    currNode.next = this.head;
+  }
+
 }
 
 module.exports = LinkedList;
