@@ -1,3 +1,5 @@
+const LinkedList = require('./LinkedList');
+
 const display = (ll) => {
   let tempNode = ll.head;
   let display = [];
@@ -75,10 +77,32 @@ const findLast = (ll) => {
   return currNode.value;
 };
 
+const reverse = (ll) => {
+  let currNode = ll.head;
+  let prevNode = null;
+
+
+  while(currNode.next !== null) {
+    let head = currNode.next;
+    currNode.next = prevNode;
+
+    prevNode = currNode;
+    currNode = head;
+  }
+  
+  
+  return prevNode
+
+}
+
+// 1 2 3
+// 1 -> 2 ===> 1 <- 2
+
 module.exports = {
   display,
   size,
   isEmpty,
   findPrevious,
   findLast,
+  reverse
 };
