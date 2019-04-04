@@ -48,10 +48,10 @@ const findPrevious = (ll, key) => {
   let currNode = ll.head;
 
   if(ll.head === null) {
-    return '';
+    return 'the list is empty';
   }
 
-  while(currNode.value !== key) {
+  while(currNode.value !== key && currNode.next !== null) {
     prevNode = currNode;
     currNode = currNode.next;
   }
@@ -62,12 +62,12 @@ const findPrevious = (ll, key) => {
 const findLast = (ll) => {
   let prevNode = ll.head;
   let currNode = ll.head;
-
-  if(ll.head.next === null) {
-    return ll.head;
-  }
+  
   if(ll.head === null) {
-    return '';
+    return 'the list is empty';
+  }
+  if(ll.head.next === null) {
+    return ll.head.value;
   }
 
   while(currNode.next !== null) {
