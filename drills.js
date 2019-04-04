@@ -21,7 +21,7 @@ function main() {
   console.log('Is empty:', helpers.isEmpty(SLL));
   console.log('Node before Helo:', helpers.findPrevious(SLL, 'Helo'));
   console.log('Last node:', helpers.findLast(SLL));
-  console.log('Reversed LL:', helpers.reverse(SLL));
+  console.log('Reversed LL:', helpers.display(helpers.reverse(SLL)));
 
 }
 

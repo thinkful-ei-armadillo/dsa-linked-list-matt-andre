@@ -82,7 +82,7 @@ const reverse = (ll) => {
   let prevNode = null;
 
 
-  while(currNode.next !== null) {
+  while(currNode !== null) {
     let head = currNode.next;
     currNode.next = prevNode;
 
@@ -91,7 +91,7 @@ const reverse = (ll) => {
   }
   
   
-  return prevNode
+  return new LinkedList(prevNode);
 
 }
 
